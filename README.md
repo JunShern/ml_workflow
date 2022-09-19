@@ -35,7 +35,7 @@ Repo overview (adapted from [Cookiecutter Data Science](https://github.com/drive
 Setup:
 ```bash
 # Get dependencies
-conda create -n workflow python=3.10
+conda create -n workflow python=3.9
 conda activate workflow
 pip install -r requirements.txt
 
