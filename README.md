@@ -21,9 +21,11 @@ Repo overview (adapted from [Cookiecutter Data Science](https://github.com/drive
 │   │   └── utils.py
 │   │
 │   ├── data           <- Scripts to download or generate data
+│   │   ├── config.py
 │   │   └── make_dataset.py
 │   │
 │   └── model          <- Scripts to train and test models
+│       ├── config.py
 │       ├── test.py
 │       └── train.py
 │
