@@ -1,48 +1,53 @@
-```
-conda create -n workflow python=3.8
-conda activate workflow
-pip install -r requirements.txt
-```
+# ml_workflow
 
-```
-python src/sweep.py
-```
+Skeleton/template for ML research codebase.
 
-
+Repo overview (adapted from [Cookiecutter Data Science](https://github.com/drivendata/cookiecutter-data-science)):
 ```
-├── LICENSE
-├── Makefile           <- Makefile with commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
+├── README.md          <- The README for developers using this project.
+├── requirements.txt   <- The requirements file for reproducing the analysis environment
+├── env.sh             <- Script to define and set environment variables
+│
 ├── data
 │   ├── processed      <- The final, canonical data sets for modeling.
 │   └── raw            <- The original, immutable data dump.
 │
 ├── models             <- Trained and serialized models, model predictions, or model summaries
 │
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── src                <- Source code for use in this project.
-│   ├── __init__.py    <- Makes src a Python module
+├── my_project         <- Source code, replace with your project name
+│   ├── __init__.py    <- Makes my_project a Python module
 │   │
-│   ├── config         <- Config files
-│   │   ├── data.py
-│   │   ├── test.py
-│   │   └── train.py
+│   ├── common         <- Modules shared by different parts of the project
+│   │   └── utils.py
 │   │
 │   ├── data           <- Scripts to download or generate data
 │   │   └── make_dataset.py
 │   │
-│   ├── features       <- Scripts to turn raw data into features for modeling
-│   │   └── build_features.py
-│   │
-│   ├── model          <- Scripts to train models and test models
-│   │   ├── test.py
-│   │   └── train.py
-│   │
-│   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-│       └── visualize.py
+│   └── model          <- Scripts to train and test models
+│       ├── test.py
+│       └── train.py
 │
-├── experiments        <- Configs and scripts for running experiments
-│   ├── sweep.py       <- Run hyperparameter sweeps
+└── experiments        <- Configs and scripts for running experiments
+    ├── agent.sbatch   <- sbatch file to run jobs on SLURM
+    └── sweep.py       <- Run hyperparameter sweeps
+```
+
+Setup:
+```bash
+# Get dependencies
+conda create -n workflow python=3.10
+conda activate workflow
+pip install -r requirements.txt
+
+# Fill in the environment variables in `env.sh` then apply them
+source env.sh
+```
+
+Example usage:
+```bash
+# Train a single model
+python -m my_project.model.train
+
+# Run hyperparameter sweep
+python experiments/sweep.py
 ```

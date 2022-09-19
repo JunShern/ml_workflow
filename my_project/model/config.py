@@ -1,17 +1,8 @@
-from pathlib import Path
-from typing import List
+from typing import List, Optional
 from dataclasses import dataclass, field
 
+from my_project.data.config import DatasetConfig
 
-@dataclass
-class DatasetConfig:
-    """
-    Params for dataset
-    """
-    base_dir: Path = Path(".") # Base path of repo
-    data_dir: Path =  base_dir / "dataset" # Path to store datasets
-    raw_data_dir: Path =  data_dir / "raw" # Subdir within data_dir to store raw data
-    processed_data_dir: Path =  data_dir / "processed" # Subdir within data_dir to store processed data
 
 @dataclass
 class TrainConfig:
@@ -23,6 +14,7 @@ class TrainConfig:
     learning_rate: float = 1e-5 # Learning rate
     model: str = "gpt-35" # The model name
 
+
 @dataclass
 class TestConfig:
     """
@@ -33,10 +25,13 @@ class TestConfig:
     
 
 @dataclass
-class ExperimentConfig:
+class RunConfig:
     """
-    Experiment config, can store other configs hierarchically
+    Parent config for a run, can store other configs hierarchically
     """
-    tags: List[str] = field(default_factory=list) # tags to apply to the project
+    group: Optional[str] = None # Name for this experiment group
+    tags: List[str] = field(default_factory=list) # Tags to apply to this run
+    job_type: str = "train" # Type of job (train|test)
     random_seed: int = 0 # Seed for random number generators
     train: TrainConfig = field(default_factory=TrainConfig)
+    dataset: DatasetConfig = field(default_factory=DatasetConfig)
