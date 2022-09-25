@@ -1,6 +1,6 @@
 # ml_workflow
 
-Skeleton/template for ML research codebase, accompanies this blog post on my [ML Experiment Workflow](https://www.notion.so/junshern/ML-Experiment-Workflow-f01d38f80ba745468aef23284f3f6e37).
+Skeleton/template for ML research codebase, accompanies this blog post on my [ML Experiment Workflow](https://junshern.notion.site/ML-Experiment-Workflow-f01d38f80ba745468aef23284f3f6e37).
 
 Repo overview (adapted from [Cookiecutter Data Science](https://github.com/drivendata/cookiecutter-data-science)):
 ```
